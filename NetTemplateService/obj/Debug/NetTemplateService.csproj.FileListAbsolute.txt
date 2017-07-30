@@ -1,0 +1,6 @@
+E:\Projects\NetTemplateService\NetTemplateService\bin\NetTemplateService.dll.config
+E:\Projects\NetTemplateService\NetTemplateService\bin\NetTemplateService.dll
+E:\Projects\NetTemplateService\NetTemplateService\bin\NetTemplateService.pdb
+E:\Projects\NetTemplateService\NetTemplateService\obj\Debug\NetTemplateService.dll
+E:\Projects\NetTemplateService\NetTemplateService\obj\Debug\NetTemplateService.pdb
+E:\Projects\NetTemplateService\NetTemplateService\obj\Debug\NetTemplateService.csprojResolveAssemblyReference.cache

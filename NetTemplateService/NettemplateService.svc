@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="NetTemplateService.NettemplateService" CodeBehind="NettemplateService.svc.cs" %>
