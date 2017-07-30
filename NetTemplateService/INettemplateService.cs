@@ -23,8 +23,42 @@ namespace NetTemplateService
         //INI ADALAH CONTOH YANG DI SEDIAKAN OLEH VISUAL STUDIO
 
         // TODO: Add your service operations here
+        // http://www.dotnettricks.com/learn/wcf/understanding-various-types-of-wcf-bindings <- tipe2 protocol WCF
+
+        
+        //contoh 1. Nilai kembalian JSON
         [OperationContract]
-        string ValidateLogin(string username, string password, out string sessionCode);
+        // bagian webinvoke ini dibutuhkan untuk di gunakan pada endpoint REST, untuk ASMX ga uasah pake ini
+        [WebInvoke(Method = "GET", //method ambil data nya. POST atau GET
+                    ResponseFormat = WebMessageFormat.Json, //Nilai kembalian
+                    BodyStyle = WebMessageBodyStyle.Wrapped, //gatau, tapi mandatory
+                    UriTemplate = "validateLoginJson/{username}/{password}")] //nge set path url. Penjelasan :
+                    // misal di web config kita set tag BaseAddress = http://localhost:65189/NettemplateService.svc
+                    // terus kita set address di endpoint nya = /RESTendpoint
+                    // naah, jadi url untuk manggil method ini melalui REST endpoint -> http://localhost:65189/NettemplateService.svc/RESTendpoint/validateLogin/param_username/param_password
+        string ValidateLoginJson(string username, string password, out string sessionCode);
+
+        //contoh 2. Niai kembalian XML
+        [OperationContract]
+        [WebInvoke(Method = "GET", 
+                    ResponseFormat = WebMessageFormat.Xml, 
+                    BodyStyle = WebMessageBodyStyle.Wrapped, 
+                    UriTemplate = "validateLoginXml/{username}/{password}")] 
+        string ValidateLoginXml(string username, string password, out string sessionCode);
+
+
+
+
+
+        //Test URL
+        //untuk yang basicHttpBinding di test by url di bawah ga muncul nilai nya
+        // contoh 1. http://localhost:65189/NettemplateService.svc/RESTendpoint/validateLoginXml/giyansanusi/giyansanusi
+        // contoh 2. http://localhost:65189/NettemplateService.svc/RESTendpoint/validateLoginJson/giyansanusi/giyansanusi 
+
+       
+       
+
+
     }
 
 

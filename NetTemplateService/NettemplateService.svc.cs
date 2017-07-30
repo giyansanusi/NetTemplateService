@@ -37,7 +37,7 @@ namespace NetTemplateService
         // -- INI ADALAH CONTOH YANG DI SEDIAKAN OLEH VISUAL STUDIO
 
         //Mulai koding dari sini
-        public string ValidateLogin(string username, string password, out string sessionCode) {
+        public string ValidateLoginJson(string username, string password, out string sessionCode) {
 
             sessionCode = "Login Failed";
 
@@ -54,5 +54,26 @@ namespace NetTemplateService
 
 
         }
+
+        public string ValidateLoginXml(string username, string password, out string sessionCode)
+        {
+
+            sessionCode = "Login Failed";
+
+            NetTemplateServiceDataContext db = new NetTemplateServiceDataContext();
+            var user = (from qrs in db.USERs
+                        where qrs.USERNAME == username && qrs.PASSWORD == password
+                        select qrs).FirstOrDefault();
+
+            if (user != null)
+            {
+                sessionCode = "Login Successful";
+            }
+
+            return string.Format("You entered: {0}", username + password);
+
+
+        }
+
     }
 }
